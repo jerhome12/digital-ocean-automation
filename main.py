@@ -1,5 +1,6 @@
 import streamlit as st
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
 def main():
     st.title("Automation with Selenium on Streamlit")
@@ -7,13 +8,12 @@ def main():
     # Set the website URL to automate
     url = "https://www.digitalocean.com/company/contact/abuse#intrusion"
     
-    # Set the options to use the pre-installed ChromeDriver
-    options = webdriver.ChromeOptions()
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
+    # Set the options for Firefox
+    options = FirefoxOptions()
+    options.add_argument("--headless")  # Run Firefox in headless mode
     
-    # Create a Chrome WebDriver instance using the pre-installed ChromeDriver
-    driver = webdriver.Chrome(options=options)
+    # Create a Firefox WebDriver instance using GeckoDriver
+    driver = webdriver.Firefox(options=options)
     
     # Open the website in the browser
     driver.get(url)
