@@ -74,14 +74,14 @@ def main():
                 st.title("Chrome Window Opener")
 
                 # Get user input for the URL
-                url = st.text_input("Enter the URL to open in a new Chrome window:")
-                button = st.button("Open Chrome Window")
+                url = "https://facebook.com"
+               
 
                 # Perform automation when the button is clicked
-                if button and url:
-                    st.write("Opening new Chrome window...")
-                    open_chrome_window(url)
-                    st.write("New Chrome window opened successfully!")
+            
+                st.write("Opening new Chrome window...")
+                open_chrome_window(url)
+                st.write("New Chrome window opened successfully!")
 
 
 
