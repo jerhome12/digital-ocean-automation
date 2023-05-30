@@ -1,13 +1,13 @@
 import streamlit as st
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
-from selenium.webdriver.chrome.service import Service
-
 def run_automation():
-    # Replace this with your own automation code
     service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service)
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location = '/usr/bin/google-chrome-stable'
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     driver.get('https://www.google.com/')
     search_box = driver.find_element_by_name('q')
     search_box.send_keys('Streamlit')
