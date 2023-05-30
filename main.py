@@ -14,7 +14,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from datetime import datetime  
-from selenium.webdriver import FirefoxOptions  
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.firefox import GeckoDriverManager
+  
 
 
 def read_excel_data(file):
@@ -60,13 +67,21 @@ def main():
                 exdata.to_excel("output.xlsx", index=False)
                 st.success("Please wait...")
                 
-                opts = FirefoxOptions()
-                opts.add_argument("--headless")
-                browser = webdriver.Firefox(options=opts)
 
-                browser.get('http://facebook.com')
-                st.write(browser.page_source)
 
+                URL = "https://facebook.com"
+                TIMEOUT = 20
+
+                st.title("Test Selenium")
+
+                firefoxOptions = Options()
+                firefoxOptions.add_argument("--headless")
+                service = Service(GeckoDriverManager().install())
+                driver = webdriver.Firefox(
+                    options=firefoxOptions,
+                    service=service,
+                )
+                driver.get(URL)
 
                 # options = Options()
                 # options.add_experimental_option("detach", True)
