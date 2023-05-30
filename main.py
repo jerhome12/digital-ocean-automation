@@ -1,28 +1,22 @@
 import streamlit as st
-import requests
-from io import BytesIO
-from PIL import Image
+from selenium import webdriver
 
-def main():
-    st.title("Automation with Puppeteer on Streamlit")
-    
-    # Set the website URL to automate
-    url = "https://www.digitalocean.com/company/contact/abuse#intrusion"
-    
-    # Make a request to a Puppeteer service to capture a screenshot
-    response = requests.post("http://your-puppeteer-service-url.com/screenshot", json={"url": url})
-    if response.status_code == 200:
-        # Display the captured screenshot in Streamlit
-        image = Image.open(BytesIO(response.content))
-        st.image(image, caption="Website Screenshot", use_column_width=True)
-    else:
-        st.error("Failed to capture screenshot.")
-    
-    # Other automation steps can be performed using Puppeteer
-    
-if __name__ == "__main__":
-    main()
+def run_automation():
+    # Replace this with your own automation code
+    driver = webdriver.Chrome()
+    driver.get('https://www.google.com/')
+    search_box = driver.find_element_by_name('q')
+    search_box.send_keys('Streamlit')
+    search_box.submit()
+    driver.quit()
 
+st.title('Streamlit Automation Example')
+link = 'https://www.streamlit.io/'
+if st.button('Open Streamlit Website'):
+    run_automation()
+    js = f"window.open('{link}')"  # open link in new tab
+    html = f"<script>{js}</script>"
+    st.markdown(html, unsafe_allow_html=True)
 
 
 
