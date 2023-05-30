@@ -60,34 +60,29 @@ def main():
                 st.success("Please wait...")
 
 
-                def interact_with_webpage(url):
-                    # Set up Selenium WebDriver
-                    driver = webdriver.Chrome()
+                def open_chrome_window(url):
+                    # Set up Selenium WebDriver with actual Chrome browser
+                    options = webdriver.ChromeOptions()
+                    options.add_argument("--start-maximized")
+                    driver = webdriver.Chrome(options=options)
                     driver.get(url)
-
-                    st.write("Interaction completed successfully!")
-
-                    # # Find an example element and interact with it
-                    # element = WebDriverWait(driver, 10).until(
-                    #     EC.presence_of_element_located((By.ID, "example-element"))
-                    # )
-                    # element.click()
 
                     # Close Selenium WebDriver
                     driver.quit()
 
                 # Streamlit app code
-                st.title("Web Page Interactor")
+                st.title("Chrome Window Opener")
 
                 # Get user input for the URL
-                url = st.text_input("Enter the URL of the web page:")
-                button = st.button("Interact with Web Page")
+                url = st.text_input("Enter the URL to open in a new Chrome window:")
+                button = st.button("Open Chrome Window")
 
                 # Perform automation when the button is clicked
                 if button and url:
-                    st.write("Interacting with web page...")
-                    interact_with_webpage(url)
-                    st.write("Interaction completed successfully!")
+                    st.write("Opening new Chrome window...")
+                    open_chrome_window(url)
+                    st.write("New Chrome window opened successfully!")
+
 
 
                 # options = Options()
