@@ -91,6 +91,9 @@ def main():
                 # Render the web browser within Streamlit
                 st.image(driver.get_screenshot_as_png(), use_column_width=True)
 
+                # Close the driver
+                driver.quit()
+
             
 
                 # # Open the Excel file with openpyxl
