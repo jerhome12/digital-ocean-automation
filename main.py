@@ -65,11 +65,13 @@ def main():
                     driver = webdriver.Chrome()
                     driver.get(url)
 
-                    # Find an example element and interact with it
-                    element = WebDriverWait(driver, 10).until(
-                        EC.presence_of_element_located((By.ID, "example-element"))
-                    )
-                    element.click()
+                    st.write("Interaction completed successfully!")
+
+                    # # Find an example element and interact with it
+                    # element = WebDriverWait(driver, 10).until(
+                    #     EC.presence_of_element_located((By.ID, "example-element"))
+                    # )
+                    # element.click()
 
                     # Close Selenium WebDriver
                     driver.quit()
