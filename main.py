@@ -76,11 +76,17 @@ def main():
 
                 driver = webdriver.Chrome(options=options)
 
-                # Set the URL to open
-                url = "https://www.digitalocean.com/company/contact/abuse#intrusion"  # Replace with your desired URL
+                # Streamlit app layout
+                st.title("Selenium Web Browser in Streamlit")
+                st.markdown("Click 'Open' to view a specific URL in the web browser.")
 
-                # Load the URL in the web browser
-                driver.get(url)
+                # Button to open the URL
+                if st.button("Open"):
+                    # Set the URL to open
+                    url = "https://www.digitalocean.com/company/contact/abuse#intrusion"
+
+                    # Load the URL in the web browser
+                    driver.get(url)
 
                 # Render the web browser within Streamlit
                 st.image(driver.get_screenshot_as_png(), use_column_width=True)
