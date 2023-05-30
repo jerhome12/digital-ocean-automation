@@ -13,7 +13,8 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
-from datetime import datetime    
+from datetime import datetime  
+from selenium.webdriver import FirefoxOptions  
 
 
 def read_excel_data(file):
@@ -58,14 +59,7 @@ def main():
 
                 exdata.to_excel("output.xlsx", index=False)
                 st.success("Please wait...")
-
-
-                import streamlit as st
-                import os, sys
-
                 
-                from selenium import webdriver
-                from selenium.webdriver import FirefoxOptions
                 opts = FirefoxOptions()
                 opts.add_argument("--headless")
                 browser = webdriver.Firefox(options=opts)
