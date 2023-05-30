@@ -60,8 +60,8 @@ def main():
                 exdata.to_excel("output.xlsx", index=False)
                 st.success("Please wait...")
 
-                options = Options()
-                options.add_experimental_option("detach", True)
+                # options = Options()
+                # options.add_experimental_option("detach", True)
 
                 #Developers
                 print("========== Digital Ocean Automation ==========")
@@ -69,6 +69,30 @@ def main():
                 print("Subscribe to my Youtube channel: Jerhome Vlogs")
                 print("From Pangasinan State University (PSU)")
                 print("Enjoy using our automation\n")
+
+                # Set up Chrome driver
+                options = webdriver.ChromeOptions()
+                options.add_argument('--headless')  # Run Chrome in headless mode, if needed
+
+                driver = webdriver.Chrome(options=options)
+
+                # Streamlit app layout
+                st.title("Selenium Web Browser in Streamlit")
+                st.markdown("Enter a URL and click 'Open' to view it in the web browser.")
+
+                # Input box for the URL
+                url = st.text_input("Enter a URL")
+
+                # Button to open the URL
+                if st.button("Open"):
+                    # Load the URL in the web browser
+                    driver.get(url)
+
+                # Render the web browser within Streamlit
+                st.image(driver.get_screenshot_as_png(), use_column_width=True)
+
+                # Close the driver
+                driver.quit()
 
                 # # Open the Excel file with openpyxl
                 # wb = openpyxl.load_workbook("output.xlsx")
