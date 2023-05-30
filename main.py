@@ -1,9 +1,10 @@
 import streamlit as st
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 
 def run_automation():
     # Replace this with your own automation code
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get('https://www.google.com/')
     search_box = driver.find_element_by_name('q')
     search_box.send_keys('Streamlit')
