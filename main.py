@@ -1,25 +1,25 @@
 import streamlit as st
-from selenium import webdriver
-from selenium.webdriver.firefox.options import Options as FirefoxOptions
+import requests
+from io import BytesIO
+from PIL import Image
 
 def main():
-    st.title("Automation with Selenium on Streamlit")
+    st.title("Automation with Puppeteer on Streamlit")
     
     # Set the website URL to automate
     url = "https://www.digitalocean.com/company/contact/abuse#intrusion"
     
-    # Set the options for Firefox
-    options = FirefoxOptions()
-    options.add_argument("--headless")  # Run Firefox in headless mode
+    # Make a request to a Puppeteer service to capture a screenshot
+    response = requests.post("http://your-puppeteer-service-url.com/screenshot", json={"url": url})
+    if response.status_code == 200:
+        # Display the captured screenshot in Streamlit
+        image = Image.open(BytesIO(response.content))
+        st.image(image, caption="Website Screenshot", use_column_width=True)
+    else:
+        st.error("Failed to capture screenshot.")
     
-    # Create a Firefox WebDriver instance using GeckoDriver
-    driver = webdriver.Firefox(options=options)
+    # Other automation steps can be performed using Puppeteer
     
-    # Open the website in the browser
-    driver.get(url)
-    
-    # Other automation steps can be performed here
-
 if __name__ == "__main__":
     main()
 
