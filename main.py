@@ -1,15 +1,19 @@
 import streamlit as st
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 def main():
     st.title("Automation with Selenium on Streamlit")
     
-    # Create a Chrome WebDriver instance
-    driver = webdriver.Chrome(ChromeDriverManager().install())
-    
     # Set the website URL to automate
     url = "https://www.digitalocean.com/company/contact/abuse#intrusion"
+    
+    # Set the options to use the pre-installed ChromeDriver
+    options = webdriver.ChromeOptions()
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    
+    # Create a Chrome WebDriver instance using the pre-installed ChromeDriver
+    driver = webdriver.Chrome(options=options)
     
     # Open the website in the browser
     driver.get(url)
@@ -18,6 +22,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
