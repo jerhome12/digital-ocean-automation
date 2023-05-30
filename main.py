@@ -1,20 +1,36 @@
 import streamlit as st
 from selenium import webdriver
 
-# Set up the Selenium driver
-driver = webdriver.Chrome()
+def perform_automation():
+    # Specify the path to the web driver executable
+    driver_path = 'chromedriver_win32/chromedriver'  # Replace with the actual path to the driver
+    
+    # Create a new ChromeDriver instance
+    driver = webdriver.Chrome(driver_path)
+    
+    # Perform automation steps
+    # For example, let's open a website and get its title
+    driver.get('https://www.example.com')
+    title = driver.title
+    
+    # Close the driver
+    driver.quit()
+    
+    return title
 
-# Write your Selenium script
-driver.get("https://www.google.com/")
-search_box = driver.find_element_by_name("q")
-search_box.send_keys("Streamlit")
-search_box.submit()
+def main():
+    st.title("Streamlit Automation with Selenium")
+    st.write("This is an example of Streamlit automation with Selenium.")
 
-# Add Streamlit code
-st.write(driver.title)
+    # Call the automation function
+    result = perform_automation()
+    
+    # Display the result
+    st.write("Website title:", result)
 
-# Clean up
-driver.quit()
+if __name__ == "__main__":
+    main()
+
 
 # #Libraries
 # import streamlit as st
