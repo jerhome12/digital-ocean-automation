@@ -1,19 +1,25 @@
 import streamlit as st
 from selenium import webdriver
 
+def open_link_with_selenium(link):
+    # Set up Selenium WebDriver
+    driver = webdriver.Chrome()
+    driver.get(link)
 
-def main():
-    st.title("Streamlit Automation with Selenium")
-    st.write("This is an example of Streamlit automation with Selenium.")
+    # You can perform additional web automation tasks here if needed
 
-    # Call the automation function
-  
-    
-    # Display the result
+    # Close Selenium WebDriver
+    driver.quit()
 
+# Streamlit app code
+st.title("Open Link with Selenium")
+link = st.text_input("Enter a link")
+button = st.button("Open Link")
 
-if __name__ == "__main__":
-    main()
+if button and link:
+    open_link_with_selenium(link)
+    st.write(f"Opened link: {link}")
+
 
 
 # #Libraries
