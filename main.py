@@ -69,19 +69,9 @@ def main():
                 
 
 
-                URL = "https://facebook.com"
-                TIMEOUT = 20
+                driver = webdriver.Chrome("drivers/chromedriver.exe")
 
-                st.title("Test Selenium")
-
-                firefoxOptions = Options()
-                firefoxOptions.add_argument("--headless")
-                service = Service(GeckoDriverManager().install())
-                driver = webdriver.Firefox(
-                    options=firefoxOptions,
-                    service=service,
-                )
-                driver.get(URL)
+                driver.get("https://facebook.com")
 
                 # options = Options()
                 # options.add_experimental_option("detach", True)
