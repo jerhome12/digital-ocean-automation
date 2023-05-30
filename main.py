@@ -78,16 +78,16 @@ def main():
                 # currRow = 2
 
                 #Install the chrome driver
-                options = webdriver.ChromeOptions()
-                options.add_argument('--headless')  # Run Chrome in headless mode, if needed
+                # options = webdriver.ChromeOptions()
+                # options.add_argument('--headless')  # Run Chrome in headless mode, if needed
 
-                driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+                # driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
-                #Link to be open
-                driver.get("https://www.digitalocean.com/company/contact/abuse#intrusion")
+                # #Link to be open
+                # driver.get("https://www.digitalocean.com/company/contact/abuse#intrusion")
                 
-                agree = driver.find_element("xpath",'.//*[@id="truste-consent-button"]')
-                agree.click()
+                # agree = driver.find_element("xpath",'.//*[@id="truste-consent-button"]')
+                # agree.click()
 
 
                 # # Set the initial value for last_characteristic to None
