@@ -76,8 +76,10 @@ def main():
 
                 driver = webdriver.Chrome(options=options)
 
-                # Input box for the URL
-                url = st.text_input("https://www.digitalocean.com/company/contact/abuse#intrusion")
+                # Set the URL to open
+                url = "https://www.digitalocean.com/company/contact/abuse#intrusion"  # Replace with your desired URL
+
+                # Load the URL in the web browser
                 driver.get(url)
 
                 # Render the web browser within Streamlit
