@@ -60,29 +60,18 @@ def main():
                 st.success("Please wait...")
 
 
-                def open_chrome_window(url):
-                    # Set up Selenium WebDriver with actual Chrome browser
-                    options = webdriver.ChromeOptions()
-                    options.add_argument("--start-maximized")
-                    driver = webdriver.Chrome(options=options)
-                    driver.get(url)
+                import streamlit as st
+                import os, sys
 
-                    # Close Selenium WebDriver
-                    driver.quit()
+                
+                from selenium import webdriver
+                from selenium.webdriver import FirefoxOptions
+                opts = FirefoxOptions()
+                opts.add_argument("--headless")
+                browser = webdriver.Firefox(options=opts)
 
-                # Streamlit app code
-                st.title("Chrome Window Opener")
-
-                # Get user input for the URL
-                url = "https://facebook.com"
-               
-
-                # Perform automation when the button is clicked
-            
-                st.write("Opening new Chrome window...")
-                open_chrome_window(url)
-                st.write("New Chrome window opened successfully!")
-
+                browser.get('http://facebook.com')
+                st.write(browser.page_source)
 
 
                 # options = Options()
