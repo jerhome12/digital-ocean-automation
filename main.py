@@ -78,21 +78,18 @@ def main():
 
                 # Streamlit app layout
                 st.title("Selenium Web Browser in Streamlit")
-                st.markdown("Click 'Open' to view a specific URL in the web browser.")
+                st.markdown("Enter a URL and click 'Open' to view it in the web browser.")
+
+                # Input box for the URL
+                url = st.text_input("Enter a URL")
 
                 # Button to open the URL
                 if st.button("Open"):
-                    # Set the URL to open
-                    url = "https://www.digitalocean.com/company/contact/abuse#intrusion"
-
                     # Load the URL in the web browser
                     driver.get(url)
 
                 # Render the web browser within Streamlit
                 st.image(driver.get_screenshot_as_png(), use_column_width=True)
-
-                # Close the driver
-                driver.quit()
 
             
 
