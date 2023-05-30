@@ -60,26 +60,26 @@ def main():
                 st.success("Please wait...")
 
 
-                def open_webpage(url):
-                    # Set up Selenium WebDriver
-                    driver = webdriver.Chrome()
-                    driver.get(url)
+                # def open_webpage(url):
+                #     # Set up Selenium WebDriver
+                #     driver = webdriver.Chrome()
+                #     driver.get(url)
 
-                    # Close Selenium WebDriver
-                    driver.quit()
+                #     # Close Selenium WebDriver
+                #     driver.quit()
 
-                # Streamlit app code
-                st.title("Web Page Opener")
+                # # Streamlit app code
+                # st.title("Web Page Opener")
 
-                # Get user input for the URL
-                url = st.text_input("Enter the URL of the web page:")
-                button = st.button("Open Web Page")
+                # # Get user input for the URL
+                # url = st.text_input("Enter the URL of the web page:")
+                # button = st.button("Open Web Page")
 
-                # Perform automation when the button is clicked
-                if button and url:
-                    st.write("Opening web page...")
-                    open_webpage(url)
-                    st.write("Web page opened successfully!")
+                # # Perform automation when the button is clicked
+                # if button and url:
+                #     st.write("Opening web page...")
+                #     open_webpage(url)
+                st.write("Web page opened successfully!")
 
 
                 # options = Options()
