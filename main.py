@@ -3,10 +3,6 @@ import streamlit as st
 import pandas as pd
 import re
 import openpyxl
-import keyboard
-import pyautogui
-import time
-import sys
 from openpyxl import load_workbook
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
