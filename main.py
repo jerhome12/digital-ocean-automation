@@ -5,6 +5,7 @@ import re
 import openpyxl
 from openpyxl import load_workbook
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
@@ -77,8 +78,10 @@ def main():
                 # currRow = 2
 
                 #Install the chrome driver
-                driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)
-                driver.maximize_window()
+                options = webdriver.ChromeOptions()
+                options.add_argument('--headless')  # Run Chrome in headless mode, if needed
+
+                driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
                 #Link to be open
                 driver.get("https://www.digitalocean.com/company/contact/abuse#intrusion")
