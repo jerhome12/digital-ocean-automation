@@ -69,7 +69,7 @@ def main():
                 
 
 
-                driver = webdriver.Chrome("drivers/chromedriver.exe")
+                driver = webdriver.Chrome(executable_path="drivers\chromedriver.exe")
 
                 driver.get("https://facebook.com")
 
