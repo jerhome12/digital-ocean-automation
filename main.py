@@ -85,13 +85,6 @@ def main():
                 
                 agree = driver.find_element("xpath",'.//*[@id="truste-consent-button"]')
                 agree.click()
-                pyautogui.hotkey('ctrl', '-')
-                pyautogui.hotkey('ctrl', '-')
-                pyautogui.hotkey('ctrl', '-')
-                pyautogui.hotkey('ctrl', '-')
-                pyautogui.hotkey('ctrl', '-')
-                pyautogui.hotkey('ctrl', '-')
-                pyautogui.hotkey('ctrl', '-')
 
 
                 # Set the initial value for last_characteristic to None
@@ -291,7 +284,7 @@ def main():
                                     # Others type of Scan
                                     abtclick = driver.find_element("xpath",'.//*[@id="intrusion_sub_category-others"]')
                                     abtclick.click()
-                                    keyboard.press_and_release('tab')
+                
 
                                     # Name
                                     uname = driver.find_element("xpath",'.//*[@id="reporter_name"]')
@@ -697,7 +690,6 @@ def main():
                                     abtclick = driver.find_element("xpath",'.//*[@id="intrusion_sub_category-others"]')
                                     abtclick.click()
 
-                                    keyboard.press_and_release('tab')
 
                                     # Name
                                     uname = driver.find_element("xpath",'.//*[@id="reporter_name"]')
