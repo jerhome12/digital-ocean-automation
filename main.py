@@ -60,26 +60,32 @@ def main():
                 st.success("Please wait...")
 
 
-                # def open_webpage(url):
-                #     # Set up Selenium WebDriver
-                #     driver = webdriver.Chrome()
-                #     driver.get(url)
+                def interact_with_webpage(url):
+                    # Set up Selenium WebDriver
+                    driver = webdriver.Chrome()
+                    driver.get(url)
 
-                #     # Close Selenium WebDriver
-                #     driver.quit()
+                    # Find an example element and interact with it
+                    element = WebDriverWait(driver, 10).until(
+                        EC.presence_of_element_located((By.ID, "example-element"))
+                    )
+                    element.click()
 
-                # # Streamlit app code
-                # st.title("Web Page Opener")
+                    # Close Selenium WebDriver
+                    driver.quit()
 
-                # # Get user input for the URL
-                # url = st.text_input("Enter the URL of the web page:")
-                # button = st.button("Open Web Page")
+                # Streamlit app code
+                st.title("Web Page Interactor")
 
-                # # Perform automation when the button is clicked
-                # if button and url:
-                #     st.write("Opening web page...")
-                #     open_webpage(url)
-                st.write("Web page opened successfully!")
+                # Get user input for the URL
+                url = st.text_input("Enter the URL of the web page:")
+                button = st.button("Interact with Web Page")
+
+                # Perform automation when the button is clicked
+                if button and url:
+                    st.write("Interacting with web page...")
+                    interact_with_webpage(url)
+                    st.write("Interaction completed successfully!")
 
 
                 # options = Options()
