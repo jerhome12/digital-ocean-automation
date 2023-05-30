@@ -76,23 +76,14 @@ def main():
 
                 driver = webdriver.Chrome(options=options)
 
-                # Streamlit app layout
-                st.title("Selenium Web Browser in Streamlit")
-                st.markdown("Enter a URL and click 'Open' to view it in the web browser.")
-
                 # Input box for the URL
-                url = st.text_input("Enter a URL")
-
-                # Button to open the URL
-                if st.button("Open"):
-                    # Load the URL in the web browser
-                    driver.get(url)
+                url = st.text_input("https://www.digitalocean.com/company/contact/abuse#intrusion")
+                driver.get(url)
 
                 # Render the web browser within Streamlit
                 st.image(driver.get_screenshot_as_png(), use_column_width=True)
 
-                # Close the driver
-                driver.quit()
+            
 
                 # # Open the Excel file with openpyxl
                 # wb = openpyxl.load_workbook("output.xlsx")
