@@ -1,20 +1,41 @@
 import streamlit as st
-
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 
-@st.experimental_singleton
-def get_driver():
-    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+def main():
+    st.title("Streamlit Automation with Selenium")
 
-options = Options()
-options.add_argument('--disable-gpu')
-options.add_argument('--headless')
+    # Define the user interface
+    url = st.text_input("Enter URL")
+    button_clicked = st.button("Open Website")
 
-driver = get_driver()
-driver.get('http://example.com')
+    # Perform automation when button is clicked
+    if button_clicked:
+        try:
+            # Initialize the Selenium Chrome webdriver
+            driver = webdriver.Chrome()
+
+            # Open the specified URL
+            driver.get(url)
+
+            # Perform automation actions
+            # For example, you can find elements and interact with them
+            # driver.find_element_by_xpath(...).click()
+            # driver.find_element_by_id(...).send_keys(...)
+
+            # Display a success message
+            st.success("Automation completed successfully!")
+
+        except Exception as e:
+            # Display an error message if any exception occurs
+            st.error(f"An error occurred during automation: {str(e)}")
+
+        finally:
+            # Quit the webdriver
+            driver.quit()
+
+if __name__ == "__main__":
+    main()
+
 
 
 
