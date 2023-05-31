@@ -1,26 +1,30 @@
 import streamlit as st
+import requests
+import zipfile
+import io
 from selenium import webdriver
 
 def main():
-    st.title("Streamlit Automation with Selenium")
+    st.title("Streamlit Automation with Online WebDriver Download")
 
     # Define the user interface
-    url = st.text_input("Enter URL")
-    button_clicked = st.button("Open Website")
+    version = st.text_input("Enter Chrome WebDriver version")
+    os = st.text_input("Enter your operating system (e.g., linux64)")
+
+    button_clicked = st.button("Download and Use WebDriver")
 
     # Perform automation when button is clicked
     if button_clicked:
         try:
-            # Initialize the Selenium Chrome webdriver
-            driver = webdriver.Chrome()
+            # Download and extract the Chrome webdriver
+            webdriver_path = download_chrome_webdriver(version, os)
 
-            # Open the specified URL
-            driver.get(url)
+            # Initialize the Chrome webdriver
+            driver = webdriver.Chrome(executable_path=webdriver_path)
 
-            # Perform automation actions
-            # For example, you can find elements and interact with them
-            # driver.find_element_by_xpath(...).click()
-            # driver.find_element_by_id(...).send_keys(...)
+            # Use the Chrome webdriver for automation
+            driver.get("https://www.example.com")
+            # Perform other automation actions
 
             # Display a success message
             st.success("Automation completed successfully!")
@@ -32,6 +36,25 @@ def main():
         finally:
             # Quit the webdriver
             driver.quit()
+
+def download_chrome_webdriver(version, os):
+    # Specify the URL to download the Chrome webdriver
+    webdriver_url = "https://chromedriver.storage.googleapis.com/{version}/chromedriver_{os}.zip"
+
+    # Generate the download URL with the specified version and OS
+    download_url = webdriver_url.format(version=version, os=os)
+
+    # Send a request to download the webdriver zip file
+    response = requests.get(download_url)
+
+    # Extract the contents of the zip file
+    zip_file = zipfile.ZipFile(io.BytesIO(response.content))
+    zip_file.extractall()
+
+    # The webdriver binary will be available in the extracted directory
+    webdriver_path = "./chromedriver"  # Adjust this based on the extracted location
+
+    return webdriver_path
 
 if __name__ == "__main__":
     main()
