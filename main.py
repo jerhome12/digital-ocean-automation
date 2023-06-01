@@ -59,6 +59,9 @@ def main():
                 exdata.to_excel("output.xlsx", index=False)
                 st.success("Please wait...")
 
+                options = Options()
+                options.add_experimental_option("detach", True)
+
                 #Developers
                 print("========== Digital Ocean Automation ==========")
                 print("Made by: Jerhome Vlogs, Edgardo dizon, Maverick Nuve")
@@ -73,16 +76,8 @@ def main():
                 row_count = sum(1 for row in ws if any(cell.value is not None for cell in row)) 
                 currRow = 2
 
-                options = Options()
-                options.add_argument("--headless")  # Run Chrome in headless mode
-
-                # Download the latest ChromeDriver
-                chrome_driver_path = ChromeDriverManager().install()
-
-                # Set up the Chrome driver with the provided paths
-                driver = webdriver.Chrome(service=Service(executable_path=chrome_driver_path), options=options)
-
-                # Install the chrome driver
+                #Install the chrome driver
+                driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)
                 driver.maximize_window()
 
                 #Link to be open
